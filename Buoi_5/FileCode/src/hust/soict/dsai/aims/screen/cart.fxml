@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Option">
+                  <items>
+                        <Menu mnemonicParsing="false" text="Update Store">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Add Book" />
+                              <MenuItem mnemonicParsing="false" text="Add CD" />
+                              <MenuItem mnemonicParsing="false" text="Add DVD" />
+                          </items>
+                        </Menu>
+                        <MenuItem mnemonicParsing="false" text="View Store" />
+                        <MenuItem mnemonicParsing="false" text="View Cart" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Label text="Cart" textFill="AQUA">
+               <font>
+                  <Font size="50.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Filter" />
+                  <TextField fx:id="tfFilter" />
+                  <RadioButton fx:id="radioBtnFilterId" mnemonicParsing="false" onAction="#handleFilter" selected="true" text="ID">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="filterCategory" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtnFilterTitle" mnemonicParsing="false" onAction="#handleFilter" text="By Title" toggleGroup="$filterCategory" />
+               </children>
+            </HBox>
+            <TableView fx:id="tblMedia">
+              <columns>
+                <TableColumn fx:id="colMediaTitle" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="colMediacategory" prefWidth="75.0" text="Category" />
+                  <TableColumn fx:id="colMediaCost" prefWidth="75.0" text="Cost" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Pane>
+               <children>
+                  <Button fx:id="btnPlay" layoutX="14.0" mnemonicParsing="false" text="Play" />
+                  <Button fx:id="btnRemove" layoutX="67.0" mnemonicParsing="false" onAction="#btnRemovePressed" text="Remove" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Pane>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="200.0" BorderPane.alignment="TOP_CENTER">
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label lineSpacing="10.0" text="Total: ">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalCost" lineSpacing="10.0" text="0 $" textFill="AQUA">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" style="-fx-background-color: RED;" text="Place Order" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
